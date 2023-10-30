@@ -1,22 +1,23 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 
-public class Solver 
+public class Solver
 {
     String[][] board;
     int count;
     int score;
-    final Scanner file = new Scanner("test.txt");
+    File f;
+    Scanner file;
 
-    public Solver()
+    public Solver() throws FileNotFoundException
     {
         count = 0;
         score = 0;
         board = null;
-        //file = new Scanner("dict.txt");
+        f = new File("test.txt"); ///Users/wubbalubbadubdub/Downloads/WORDHUNT/test.txt
+        file = new Scanner(f);
     }
 
     public Solver(String[][] b)
@@ -66,11 +67,11 @@ public class Solver
     public void fileTest()
     {
         int count = 0;
-        while(file.hasNext())
+        while(file.hasNextLine())
         {
             String line = file.nextLine();
-            System.out.println(line + count);
             count++;
+            System.out.println(line + count);
         }
     }
 
